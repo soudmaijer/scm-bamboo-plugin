@@ -12,7 +12,7 @@
   <packaging>jar</packaging>
   <name>scm-bamboo-plugin</name>
   <url>https://github.com/soudmaijer/scm-bamboo-plugin</url>
-  <description>This plugin will ping your Jenkins CI server when a new commit is pushed to SCM-Manager.</description>
+  <description>This plugin will ping your Bamboo CI server when a new commit is pushed to SCM-Manager.</description>
   <scm>
     <connection>scm:git:https://github.com/soudmaijer/scm-bamboo-plugin</connection>
     <developerConnection>scm:git:https://github.com/soudmaijer/scm-bamboo-plugin</developerConnection>
