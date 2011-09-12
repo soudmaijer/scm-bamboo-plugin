@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <information>
+    <author>Stephan Oudmaijer</author>
+  </information>
+  <conditions>
+    <min-version>1.7</min-version>
+  </conditions>
+  <!-- register package for plugin annotation finder -->
+  <packages>
+    <package>sonia.scm.bamboo</package>
+  </packages>
+  <!-- register javascript file -->
+  <resources>
+    <script>/sonia/scm/sonia.bamboo.js</script>
+  </resources>
+</plugin>
