@@ -8,7 +8,7 @@
   </parent>
   <groupId>sonia.scm.plugins</groupId>
   <artifactId>scm-bamboo-plugin</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
   <name>scm-bamboo-plugin</name>
   <url>https://github.com/soudmaijer/scm-bamboo-plugin</url>
