@@ -2,6 +2,7 @@
 <plugin>
   <information>
     <author>Stephan Oudmaijer</author>
+    <category>Continuous Integration</category>
   </information>
   <conditions>
     <min-version>1.7</min-version>
