@@ -20,11 +20,11 @@ public class BambooPluginConfig {
         allowOverride = false;
     }
 
-    public BambooPluginConfig(final String url, final String password, final String username, boolean allowOverride) {
+    public BambooPluginConfig(final String url, final String username, final String password, boolean allowOverride) {
         this.url = url;
         this.password = password;
         this.username = username;
-        this.allowOverride = false;
+        this.allowOverride = allowOverride;
     }
 
     public String getUrl() {

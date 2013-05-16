@@ -201,11 +201,13 @@ public class BambooHook implements RepositoryHook {
             request.setBasicAuthentication(username, password);
         }
 
-        HttpResponse response = httpClient.post(url);
-        int sc = response.getStatusCode();
+        HttpResponse response = httpClient.post(request);
+        if (response != null) {
+            int sc = response.getStatusCode();
 
-        if (sc >= 400) {
-            logger.error("bamboo returned status code {}", sc);
+            if (sc >= 400) {
+                logger.error("bamboo returned status code {}", sc);
+            }
         }
     }
 
