@@ -28,57 +28,9 @@
  * http://bitbucket.org/sdorra/scm-manager
  *
  */
-Ext.ns('Sonia.Bamboo');
+Ext.ns('Sonia.bamboo');
 
-Sonia.Bamboo.ConfigPanel = Ext.extend(Sonia.repository.PropertiesFormPanel, {
-
-    formTitleText: 'Bamboo',
-    urlText: 'Bamboo URL (optional)',
-    projectText: 'Build plan key(s)',
-
-    urlHelpText: 'Optionally specify the URL of Bamboo Server. Overrides the global bamboo server URL if allowed by the administrator.',
-    projectHelpText: 'The keys of the Bamboo build plan(s) to trigger.',
-
-    initComponent: function () {
-        var config = {
-            title: this.formTitleText,
-            items: [
-                {
-                    name: 'BambooUrl',
-                    fieldLabel: this.urlText,
-                    property: 'bamboo.url',
-                    vtype: 'url',
-                    helpText: this.urlHelpText
-                },
-                {
-                    name: 'BambooPlans',
-                    fieldLabel: this.projectText,
-                    property: 'bamboo.plans',
-                    helpText: this.projectHelpText
-                }
-            ]
-        };
-
-        Ext.apply(this, Ext.apply(this.initialConfig, config));
-        Sonia.Bamboo.ConfigPanel.superclass.initComponent.apply(this, arguments);
-    }
-
-});
-
-// register xtype
-Ext.reg("BambooConfigPanel", Sonia.Bamboo.ConfigPanel);
-
-// register panel
-Sonia.repository.openListeners.push(function (repository, panels) {
-    if (Sonia.repository.isOwner(repository)) {
-        panels.push({
-            xtype: 'BambooConfigPanel',
-            item: repository
-        });
-    }
-});
-
-Sonia.Bamboo.GlobalConfigPanel = Ext.extend(Sonia.config.ConfigForm, {
+Sonia.bamboo.GlobalConfigPanel = Ext.extend(Sonia.config.ConfigForm, {
 
     titleText: 'Bamboo Server Configuration',
     urlText: 'Bamboo URL',
@@ -125,7 +77,7 @@ Sonia.Bamboo.GlobalConfigPanel = Ext.extend(Sonia.config.ConfigForm, {
         }
 
         Ext.apply(this, Ext.apply(this.initialConfig, config));
-        Sonia.Bamboo.GlobalConfigPanel.superclass.initComponent.apply(this, arguments);
+        Sonia.bamboo.GlobalConfigPanel.superclass.initComponent.apply(this, arguments);
     },
 
     onSubmit: function (values) {
@@ -171,7 +123,7 @@ Sonia.Bamboo.GlobalConfigPanel = Ext.extend(Sonia.config.ConfigForm, {
 });
 
 // register xtype
-Ext.reg("BambooGlobalConfigPanel", Sonia.Bamboo.GlobalConfigPanel);
+Ext.reg("BambooGlobalConfigPanel", Sonia.bamboo.GlobalConfigPanel);
 
 // register config panel
 registerGeneralConfigPanel({

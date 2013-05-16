@@ -14,5 +14,6 @@
   <!-- register javascript file -->
   <resources>
     <script>/sonia/scm/sonia.bamboo.js</script>
+    <script>/sonia/scm/sonia.bamboo.repository.js</script>
   </resources>
 </plugin>
