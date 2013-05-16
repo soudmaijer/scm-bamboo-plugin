@@ -118,8 +118,6 @@ public class BambooHookTest {
         ArgumentCaptor<HttpRequest> httpRequest = ArgumentCaptor.forClass(HttpRequest.class);
         verify(httpClient, times(2)).post(httpRequest.capture());
 
-        System.err.println(httpRequest.getValue().getUrl());
-
         assertTrue(httpRequest.getValue().getUrl().startsWith("http://override/api/rest/updateAndBuild.action?buildKey="));
         assertEquals("pass", httpRequest.getValue().getPassword());
         assertEquals("user", httpRequest.getValue().getUsername());
