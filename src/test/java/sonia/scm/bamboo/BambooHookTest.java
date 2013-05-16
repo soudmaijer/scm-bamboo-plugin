@@ -9,7 +9,7 @@ import sonia.scm.net.HttpClient;
 
 /**
  * Test class for the BambooHook.
- *
+ * <p/>
  * Should cover some more test cases ;-)
  *
  * @author Stephan Oudmaijer
@@ -20,10 +20,13 @@ public class BambooHookTest {
     @Mock
     private Provider<HttpClient> httpClientProvider;
 
+    @Mock
+    private BambooPluginConfigRepository repository;
+
 
     @Before
     public void setup() {
-        bambooHook = new BambooHook(httpClientProvider);
+        bambooHook = new BambooHook(httpClientProvider, repository);
     }
 
     @Test

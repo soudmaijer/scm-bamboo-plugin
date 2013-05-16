@@ -39,6 +39,7 @@ import com.google.inject.Provider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sonia.scm.net.HttpClient;
+import sonia.scm.net.HttpRequest;
 import sonia.scm.net.HttpResponse;
 import sonia.scm.plugin.ext.Extension;
 import sonia.scm.repository.Repository;
@@ -72,8 +73,12 @@ public class BambooHook implements RepositoryHook {
     /**
      * the logger for BambooHook
      */
-    private static final Logger logger =
-            LoggerFactory.getLogger(BambooHook.class);
+    private static final Logger logger = LoggerFactory.getLogger(BambooHook.class);
+
+    /**
+     * Config repository
+     */
+    private final BambooPluginConfigRepository bambooPluginConfigRepository;
 
     //~--- constructors ---------------------------------------------------------
 
@@ -83,8 +88,9 @@ public class BambooHook implements RepositoryHook {
      * @param httpClientProvider the httpClient
      */
     @Inject
-    public BambooHook(Provider<HttpClient> httpClientProvider) {
+    public BambooHook(final Provider<HttpClient> httpClientProvider, final BambooPluginConfigRepository bambooPluginConfigRepository) {
         this.httpClientProvider = httpClientProvider;
+        this.bambooPluginConfigRepository = bambooPluginConfigRepository;
     }
 
     //~--- methods --------------------------------------------------------------
@@ -149,6 +155,15 @@ public class BambooHook implements RepositoryHook {
     private void handleRepositoryEvent(Repository repository) {
         String url = repository.getProperty(PROPERTY_BAMBOO_URL);
         String plans = repository.getProperty(PROPERTY_BAMBOO_PLANS);
+        String username = null;
+        String password = null;
+        BambooPluginConfig config = bambooPluginConfigRepository.getConfig();
+
+        if (config != null) {
+            url = Util.isNotEmpty(url) && config.isAllowOverride() ? url : config.getUrl();
+            password = config.getPassword();
+            username = config.getUsername();
+        }
 
         if (Util.isNotEmpty(url) && Util.isNotEmpty(plans)) {
 
@@ -165,9 +180,9 @@ public class BambooHook implements RepositoryHook {
                 }
 
                 try {
-                    sendRequest(planUrl);
+                    sendRequest(planUrl, username, password);
                 } catch (IOException ex) {
-                    logger.error("could not send request to bamboo", ex);
+                    logger.error("Could not send request to bamboo", ex);
                 }
             }
         }
@@ -179,8 +194,13 @@ public class BambooHook implements RepositoryHook {
      * @param url Url to post data to.
      * @throws IOException exception
      */
-    private void sendRequest(String url) throws IOException {
+    private void sendRequest(String url, String username, String password) throws IOException {
         HttpClient httpClient = httpClientProvider.get();
+        HttpRequest request = new HttpRequest(url);
+        if (Util.isNotEmpty(username) && Util.isNotEmpty(password)) {
+            request.setBasicAuthentication(username, password);
+        }
+
         HttpResponse response = httpClient.post(url);
         int sc = response.getStatusCode();
 
