@@ -14,9 +14,9 @@ public class BambooPluginConfig {
     private final boolean allowOverride;
 
     public BambooPluginConfig() {
-        url = "";
-        password = "";
-        username = "";
+        url = null;
+        password = null;
+        username = null;
         allowOverride = false;
     }
 

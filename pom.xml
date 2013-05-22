@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>sonia.scm.plugins</groupId>
+        <artifactId>scm-plugins</artifactId>
+        <version>1.30</version>
+    </parent>
     <groupId>sonia.scm.plugins</groupId>
-    <artifactId>scm-plugins</artifactId>
-    <version>1.30</version>
-  </parent>
-  <groupId>sonia.scm.plugins</groupId>
-  <artifactId>scm-bamboo-plugin</artifactId>
-  <version>1.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  <name>scm-bamboo-plugin</name>
-  <url>https://github.com/soudmaijer/scm-bamboo-plugin</url>
-  <description>This plugin will ping your Bamboo CI server when a new commit is pushed to SCM-Manager.</description>
-  <scm>
-    <connection>scm:git:https://github.com/soudmaijer/scm-bamboo-plugin</connection>
-    <developerConnection>scm:git:https://github.com/soudmaijer/scm-bamboo-plugin</developerConnection>
+    <artifactId>scm-bamboo-plugin</artifactId>
+    <version>1.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>scm-bamboo-plugin</name>
     <url>https://github.com/soudmaijer/scm-bamboo-plugin</url>
-  </scm>
-  <repositories>
-    <repository>
-      <id>maven.scm-manager.org</id>
-      <name>scm-manager release repository</name>
-      <url>http://maven.scm-manager.org/nexus/content/groups/public</url>
-    </repository>
-  </repositories>
+    <description>This plugin will ping your Bamboo CI server when a new commit is pushed to SCM-Manager.</description>
+    <scm>
+        <connection>scm:git:https://github.com/soudmaijer/scm-bamboo-plugin</connection>
+        <developerConnection>scm:git:https://github.com/soudmaijer/scm-bamboo-plugin</developerConnection>
+        <url>https://github.com/soudmaijer/scm-bamboo-plugin</url>
+    </scm>
+    <dependencies>
+        <dependency>
+            <groupId>com.googlecode.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>maven.scm-manager.org</id>
+            <name>scm-manager release repository</name>
+            <url>http://maven.scm-manager.org/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
 </project>
