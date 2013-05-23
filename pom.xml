@@ -27,11 +27,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <repositories>
-        <repository>
-            <id>public.scm-manager.org</id>
-            <name>scm-manager release repository</name>
-            <url>http://maven.scm-manager.org/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
 </project>
